@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Untitled Document</title>
+<style>
+* {box-sizing: border-box;}
+    body {padding: 2.5%;
+        margin: 0px;}
+    .row:after{content: "";
+    display: block;
+    clear: both;}
+img {width: 100%}
+.gallery_item {
+    float: left;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  height: 10em;
+    overflow: hidden;
+    }
+  @media (max-width: 800px) {
+      .gallery_item {width: 30%;}
+
+    .row:nth-child(3n) {
+      margin-right: 0px;
+    }
+  }
+
+  @media (min-width: 800px) and (max-width: 1200px) {
+      .gallery_item {width: 21.25%;}
+    .row:nth-child (4n) {
+      margin-right: 0px;
+    }
+  }
+
+  @media (min-width: 1200px){
+      .gallery_item {width: 15%;}
+    .row:nth-child (5n) {
+      margin-right: 0px;
+    }
+  }
+}
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+        <div class="gallery_item">
+        <img src="Capture.PNG">
+    </div>
+</div>
+</body>
+</html>
