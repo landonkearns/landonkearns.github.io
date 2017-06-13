@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Untitled Document</title>
+<style>
+* {box-sizing: border-box;}
+[class*="col-"] {
+    width: 100%;
+    float: left;
+}
+body {padding: 0%;
+    margin: 0 auto;
+    font-family: sans-serif;
+    max-width: 1080px;}
+
+.row:after{content: "";
+    display: block;
+    clear: both;}
+    header {background: rgb(63, 144, 94);
+    text-align: center;},    
+nav > div {text-align: center;}
+    nav {background-color: rgb(63, 144, 94);}
+ul:before, ul:after {content: "";
+    display: block;}
+
+ul:after {clear: both;}
+
+nav ul {list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    background: rgba(63, 144, 94, .8);}
+
+
+
+nav a, h1 {display: block;
+    padding: 1em;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 8px;
+    color: floralwhite;
+    text-shadow: 5px 5px 5px gray;
+    transition: background .3s, text-shadow 1s;
+    font-weight: 600;}
+    
+nav a:hover {background: #6be5b1;
+    text-shadow: -5px 5px 5px gray;}
+
+nav > ul > li {text-align: center;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 1s, opacity 1s;}
+    
+nav:hover > ul > li {max-height: 5em;
+        opacity: 1;}
+    
+nav > ul {width: 100%;
+        position: absolute;}
+    
+ul ul li {max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 500ms, max-height 500ms;}
+
+nav > ul:last-child {display: none;}
+    .section {width: 100%;
+        overflow: hidden;}
+    .name {text-align: center;}
+    .para {padding: 1em;}
+    
+    .gallery div {display: none;
+        border-radius: 20px;}
+    .gallery div:first-child {display: block;} 
+    .map {display: none;}
+    .gallery {padding: 1em;}
+    .gallery img {width: 100%;}
+    .placefoot {text-align: center;
+        background: rgb(63, 144, 94);
+        }
+    .placefoot {padding: 1em;}
+    .placefoot a {color: floralwhite;
+    text-shadow: 5px 5px 5px gray;
+    transition: background .3s, text-shadow 1s;
+    font-weight: 600;}
+    .placefoot a:hover {background: #6be5b1;
+    text-shadow: -5px 5px 5px gray;}
+    .form {display: none;}
+    
+@media (min-width: 768px) {
+    .col-t-1 {width: 8.33%;}
+.col-t-2 {width: 16.66%;}
+.col-t-3 {width: 25%;}
+.col-t-4 {width: 33.33%;}
+.col-t-5 {width: 41.66%;}
+.col-t-6 {width: 50%;}
+.col-t-7 {width: 58.33%;}
+.col-t-8 {width: 66.66%;}
+.col-t-9 {width: 75%;}
+.col-t-10 {width: 83.33%;}
+.col-t-11 {width: 91.66%;}
+.col-t-12 {width: 100%;}
+    nav > div {display: none;}
+    nav > ul {width: 100%;
+        max-width: 800px;
+        position: relative;}
+    nav > ul > li {width: 25%;
+        max-height: 5em;
+        opacity: 1;
+        float: left;}
+    li > ul {position: absolute;
+        width: inherit;}
+    li:hover > ul > li {max-height: 7em;
+        opacity: 1;}
+    ul ul ul {left: 100%;
+        top: 0;}
+
+    header {background: linear-gradient(to right, rgb(63, 144, 94), rgba(0, 0, 0, 0)), url(http://i292.photobucket.com/albums/mm18/KSU_shroomer/IMG_20170424_1214531381.jpg);
+    background-size: cover;
+    background-position: left, center;
+        text-align: left;}
+    .para {padding-left: 5em;
+        padding-right: 5em;}
+    .gallery div {height: 12em;
+        overflow: hidden;
+        display: block;
+    }
+    .gallery img {height: 100%;
+        width: auto;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        top: 0%;
+        transition: transform 500ms;
+        }
+    .gallery img:hover {transform: scale(1.2);}
+    section {border: solid rgb(63, 144, 94) 2px;
+        border-radius: 20px;
+        max-width: 95%;
+        margin: 1em auto;
+        overflow: hidden;}
+     .map {min-height: 12em;
+        display: block;}
+        .form {display: block;}
+    form, h3 {display: inline;}
+}
+
+@media (min-width: 1024px){
+    .col-d-1 {width: 8.33%;}
+.col-d-2 {width: 16.66%;}
+.col-d-3 {width: 25%;}
+.col-d-4 {width: 33.33%;}
+.col-d-5 {width: 41.66%;}
+.col-d-6 {width: 50%;}
+.col-d-7 {width: 58.33%;}
+.col-d-8 {width: 66.66%;}
+.col-d-9 {width: 75%;}
+.col-d-10 {width: 83.33%;}
+.col-d-11 {width: 91.66%;}
+.col-d-12 {width: 100%;}
+    nav ul {margin: 1% 0;
+            }
+    nav > ul:first-of-type {display: inline-block;
+        width: 60%;
+        float: left;
+        max-width: 1800px;}
+    nav > ul:last-child {display: inline-block;
+        width: 40%;
+        right: 0;}
+    nav > ul:last-child li {float: right;
+        font-size: .8em;
+        margin-top: 1%;}
+     .name {text-align: right;
+        margin-right: 3em;}
+    .para {padding-left: 3em;
+        padding-right: 3em;
+        text-align: right;}
+}
+
+</style>
+</head>
+<body>
+    <header class="row"><div class="banner"><h1>ALL MY THINGS</h1></div>
+    <nav class="row">
+    <div><a href="">MENU</a></div>    
+    <ul>
+        <li><a href="">MAIN 1</a></li>
+        <li><a href="">MAIN 2</a>
+        <ul>
+            <li><a href="">SUB 2.a</a>
+                <ul>
+                <li><a href="">2.a.i</a></li>
+                <li><a href="">2.a.ii</a></li></ul></li>
+            <li><a href="">SUB 2.b</a></li>
+            <li><a href="">SUB 2.c</a></li>
+        </ul></li>
+        <li><a href="">MAIN 3</a> 
+            <ul>
+            <li><a href="">SUB 3.a</a></li>
+            <li><a href="">SUB 3.b</a></li>
+            <li><a href="">SUB 3.c</a></li>
+            </ul></li>
+        <li><a href="">MAIN 4</a>
+            <ul>
+            <li><a href="">SUB 4.a</a></li>
+            <li><a href="">SUB 4.b</a></li>
+            </ul></li>
+    </ul>
+    <ul>
+        <li><a href="">Sub 3</a></li>
+        <li><a href="">Sub 2</a></li>
+        <li><a href="">Sub 1</a></li>
+    </ul>
+    </nav>
+        </header>
+<section class="row">
+<div class="row">
+<div class="col-d-6">
+    <div class="name"><h2>ROME</h2></div>
+    <article class="para"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></article>
+    </div>
+    <div class="col-d-6 gallery">
+    <div class="col-t-3 col-d-6"><img src="https://s-media-cache-ak0.pinimg.com/originals/10/b3/e5/10b3e5178ae70a119266ecdc70bd0e9e.jpg" alt="coliseum"></div>
+    <div class="col-t-3 col-d-6"><img src="http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/Italy/Rome/rome-overview-bridge-and-river-small.jpg" alt="bridge"></div>
+    <div class="col-t-3 col-d-6"><img src="https://images.walks.org/italy/cinque-terre-tours-from-rome/rome-to-cinque-terre-featured.jpg" alt="sea"></div>
+    <div class="col-t-3 col-d-6"><div id="map" class="map"></div></div>
+    </div></div>
+    <div class="placefoot row">
+    <div class="col-t-6 link"><a href="">CLICK HERE FOR MORE INFORMATION</a></div>
+        <div class="col-t-6 form">
+        <h3>WOULD YOU VISIT HERE?</h3>
+        <form>
+            <input type="radio" name="survey" value="YES"> YES!
+            <input type="radio" name="survey" value="NO"> NO
+            <button type="submit" value="Tell Me">Tell Me</button>
+            </form>
+        </div>
+    </div>
+    </section>
+  
+
+
+</body>
+<script>
+function myMap() {
+var mapOptions = {
+    center: new google.maps.LatLng(41.15376, -81.3581),
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+}
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApWrj5SGV8vmOROi-fe4m6fDIlJRyVyyU&callback=myMap"></script>
+</html>
