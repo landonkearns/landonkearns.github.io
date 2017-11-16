@@ -1,0 +1,52 @@
+﻿[08/30/17 14:18:11]	Update Package Execution Started
+[08/30/17 14:18:11]	Original command line: "C:\Users\csvlabuser\Documents\Dell Downloads\f2ceeda1-acd6-4b5d-a2d9-f061f6a58f3e\Network_Driver_NNGMH_WN_18.1.0.0_A08.EXE" /s /l="C:\Users\csvlabuser\Documents\Dell Downloads\f2ceeda1-acd6-4b5d-a2d9-f061f6a58f3e\Network_Driver_NNGMH_WN_18.1.0.0_A08.log"
+[08/30/17 14:18:11]	DUP Framework EXE Version: 3.0.93.1
+[08/30/17 14:18:11]	DUP Release: NNGMHX00-00
+[08/30/17 14:18:11]	Intializing framework...
+[08/30/17 14:18:11]	User Command: unattended
+[08/30/17 14:18:11]	DUP Capabilities Value: 6291455 (0x5FFFFF)
+[08/30/17 14:18:11]	DUP Vendor Software Version: 18.1.0.0
+[08/30/17 14:18:11]	Local System/Model Compatible with this Package? Yes
+[08/30/17 14:18:11]	Local System OS Version: 6.2.0.0
+[08/30/17 14:18:11]	OS Compatible with this Package? Yes
+[08/30/17 14:18:11]	Local System OS Language: EN
+[08/30/17 14:18:11]	Language Compatible with this Package? Yes
+[08/30/17 14:18:11]	User Parameter: logfile
+[08/30/17 14:18:11]	User Parameter: logfile changed to: c:\users\csvlabuser\documents\dell downloads\f2ceeda1-acd6-4b5d-a2d9-f061f6a58f3e\network_driver_nngmh_wn_18.1.0.0_a08.log
+[08/30/17 14:18:17]	Identified Behavior : unattended
+[08/30/17 14:18:17]	Temporary payload log file name: C:\ProgramData\dell\drivers\Network_Driver_NNGMH_WN_18.1.0.0_A08\DUP21D6.tmp
+[08/30/17 14:18:17]	Translated Command Line : setup.exe /s /l="C:\ProgramData\dell\drivers\Network_Driver_NNGMH_WN_18.1.0.0_A08\DUP21D6.tmp"
+[08/30/17 14:18:17]	Path : C:\ProgramData\dell\drivers\Network_Driver_NNGMH_WN_18.1.0.0_A08
+[08/30/17 14:18:17]	Identified Behavior : unattended
+[08/30/17 14:18:27]	Append Vendor Software Log: C:\ProgramData\dell\drivers\Network_Driver_NNGMH_WN_18.1.0.0_A08\DUP21D6.tmp
+[08/30/17 14:18:27]	
+--- Start of Vendor Software Log ---
+
+[08/30/17 14:18:27]	ASCII payload log file detected.
+[08/30/17 14:18:27]	08/30/17  14:18:19  Intel(R) Manageable Update Package
+Supporting Intel(R) 82579LM Gigabit Network Connection with driver version 12.6.45.0
+08/30/17 14:18:19: This program was called with the command line arguments:
+/s /l="C:\ProgramData\dell\drivers\Network_Driver_NNGMH_WN_18.1.0.0_A08\DUP21D6.tmp"
+
+08/30/17 14:18:19: Silent mode specified
+
+08/30/17 14:18:19: Detected operating system:  Windows 8 (x64-bit)
+
+08/30/17 14:18:19: Intel(R) 82579LM Gigabit Network Connection
+    Current Version: NOT INSTALLED  New Version:  12.6.45.0
+
+
+08/30/17 14:18:19: The installer is in Silent mode, proceeding to driver installation.
+
+
+[08/30/17 14:18:27]	
+--- End of Vendor Software Log ---
+
+[08/30/17 14:18:27]	Vendor Software Return Code: 0
+[08/30/17 14:18:27]	Name of Exit Code: SUCCESS
+[08/30/17 14:18:27]	Exit Code set to: 0 (0x0)
+[08/30/17 14:18:27]	Result: SUCCESS
+[08/30/17 14:18:27]	Name of Exit Code: SUCCESS
+[08/30/17 14:18:27]	Execution terminated at date-time 08/30/17 14:18:27
+[08/30/17 14:18:27]	######
+
