@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button get the text content of the button element.</p>
+<div id="btns">
+<button onclick="myFunction()" id="myBtn">Try it</button>
+</div>
+<p><strong>Note:</strong> The textContent property is not supported in Internet Explorer 8 and earlier.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.createElement("button");
+  x.textContent = "Don't Try It";
+  x.onclick = "";
+  document.getElementById("btns").appendChild(x);
+}
+</script>
+
+</body>
+</html>

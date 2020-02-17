@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Untitled Document</title>
+<style>
+    * {box-sizing: border-box;
+        margin: 0;}
+    section {
+        background-image: url(https://d177aoed03zmjm.cloudfront.net/wp-content/uploads/2017/01/D1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        }
+    article {position: absolute;}
+    div {width: 10%;
+        height: 10vh;
+        float: left;
+        -webkit-transition: background-color .5s; /* Safari */
+        transition: background-color .5s;
+        }
+    </style>
+</head>
+<body>
+<article><h2>COVERED: <span id="covered">100</span> | UNCOVERED: <span id="uncov">0</span></h2></article>
+<section id="bod"></section>
+</body>
+<script>
+    //  create/declare three variables and set their initial values //
+    content = "";
+    covered = 100;
+    uncov = 0;
+    
+    //  loop this command 100 times to make the html code for the 100 boxes and append each new box to a string variable called content, each box contains an event listener (onmouseover) and function call, onmouseover="flip(this)" //
+    for (i = 0; i < 100; i++){
+        content = content + '<div id="a'+i+'" onmouseover="flip(this)" style="background-color: rgba(167, 47, 255, 1)"></div>';
+        }
+    
+    //  put the contents from the above loop into the element with ID='bod'  //
+    document.getElementById('bod').innerHTML = content;
+    
+    //  the function to toggle the color of the squares and update the covered and uncov variables //
+    function flip(elt) {
+        if (document.getElementById(elt.id).style.backgroundColor == 'rgb(167, 47, 255)') {
+            document.getElementById(elt.id).style = 'background-color: rgba(167, 47, 255, 0)';
+            uncov++;
+            covered--;
+        }
+        else {
+            document.getElementById(elt.id).style='background-color: rgb(167, 47, 255)';
+            uncov--;
+            covered++;
+        }
+        
+    // 
+    
+    // send the values of uncov and covered to their respective homes in the document //
+    document.getElementById('covered').innerHTML = covered;
+    document.getElementById('uncov').innerHTML = uncov;
+        if (uncov == 100){window.alert ("YOU WON!!")}
+    }
+</script>
+</html>

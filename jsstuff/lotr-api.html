@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- set up the viewport  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOTR Quotes</title>
+<!-- load the jQuery library from Google -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- get some cool fonts -->
+<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Bilbo&display=swap" rel="stylesheet">
+<!-- style the document -->
+<style>
+    * {box-sizing: border-box;
+        margin: 0;}
+    h1 {font-size: 3em;}
+    h2 {text-align: justify;
+        font-family: 'Bilbo', cursive;
+        font-size: 2em;}
+    h3, h4 {text-align: right;}
+    body {width: 80vw;
+        max-width: 900px;
+        margin: auto;
+        padding-top: 1em;
+        padding-bottom: 1.5em;
+        background-image: linear-gradient(rgba(198, 176, 59, 0.8), rgba(64, 59, 0, 0.6)), url(https://wallpapercave.com/wp/ite36VH.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: repeat-y;
+        background-attachment: fixed;
+        height: 100vh;
+        font-family: 'Berkshire Swash', cursive}
+    header {text-align: center;
+        background-image: linear-gradient(rgba(198, 176, 59, 0.8), rgba(157, 145, 0, 0.8));
+        border-radius: .5em;
+        padding: 1em;}
+    .col {padding: 1em;
+        background-image: linear-gradient(rgba(157, 145, 0, 0.8), rgba(198, 176, 59, 0.8));
+        margin-top: 1em;
+        border-radius: .5em;}
+    input, button {font-family: 'Berkshire Swash', cursive;
+        font-size: 1.2em;
+        vertical-align: middle;}
+    div:last-child {margin-bottom: 1.5em;}
+</style>
+</head>
+
+<body>
+<header><h1>Random LOTR Quotes</h1>
+    
+<!-- ask for a number and passit to formTake() js function -->
+<p>Pick a number from 1-10</p>
+    <input id="setNumber" type="number" name="howmany" min="1" max="10" step="1" value="1"><button onClick="formTake()">Try It!</button>
+</header>
+<section id="quotes">
+<!-- this is where the new quote elements will be placed -->
+</section>
+    
+<script>
+// what to do when someone clicks the button //
+function formTake(){
+    removeQuotes();
+    
+    //  gets the value of the number input in our form, puts it in a variable object called 'input'  //
+    var input = document.getElementById("setNumber").value;
+    
+    //  sends that value to the main function  //
+    findaquote(input);
+}
+
+// this function clears out any existing quotes //
+function removeQuotes(){
+    
+    //  first it creates an object that contains all the child nodes of the element with ID='quotes'  //
+    kill = document.getElementById("quotes").childNodes;
+    
+    //  then it counts the items in that object  //
+    numKill = kill.length;
+    
+    //  then it runs a loop (number = equal to the number of child objects) to remove the first child object of the element of ID='quotes'  //
+    for (let i=0; i<numKill; i++){
+        document.getElementById("quotes").removeChild(kill[0]);
+        }
+    }
+
+//  this function receives a number(max) and returns a random number between 1-max  //
+function randomNumber(max){
+    return Math.floor((Math.random() * max) + 1);
+}
+    
+//  some pre-fetch rules for sending authentication info in our request header //
+$.ajaxSetup({
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', 'Bearer 90K5l1cVC2O-j90WX4y5');
+    }
+});
+    
+//  this is the main function that retrieves quotes from the API, places the data in a new element, and "appends" the new new element into the quotes div  //
+function findaquote(n){
+    for (let i = 0; i < n; i++){
+        //  "n" is the number passed from the formTake function, repeat this whole function "n" number of times  //
+        
+        //  request and store locally (as the "data" object) the JSON data from our API host  //
+        $.getJSON("https://the-one-api.herokuapp.com/v1/quote",function(data){
+            // then describe what to do with that JSON data, in this case we're calling our random number function to pick a number that we'll use as the index in data's "docs" array. the docs array is what holds the movie quote, as a value called "dialog" //
+            
+            //  set a constant "numQuotes" to the number of records present in the docs array  //
+            const numQuotes = data.docs.length;
+            
+            //  send that number to our random number function to get a random number (from 1-numQuotes)  //
+            var rnd = randomNumber(numQuotes);
+            
+            //  make a new constant to hold the value (text) of the quote  //
+            const quote = data.docs[rnd].dialog;
+            
+            //  create a new <div> element and refernce it to a new variable object (line)  //
+            var line = document.createElement("div");
+            
+            //  add the .col class to the div element  //
+            line.classList.add("col");
+            
+            //  create a new <h2> element and reference it to a new variable object (words)  //
+            var words = document.createElement("h2");
+            
+            //  add the text from the quote constant to the "words" h2 element  //
+            words.textContent = quote;
+            
+            //  add the "words" h2 element to the "line" div element  //
+            line.appendChild(words);
+            
+            //  set the 'character' property of the retrieved quote to a "charID" constant  //
+            const charID = data.docs[rnd].character;
+            
+            //  do the same for 'movie' : movieID  //
+            const movieID = data.docs[rnd].movie;
+            
+            //  query the API with the characterID to retrieve "name" value  //
+            $.getJSON("https://the-one-api.herokuapp.com/v1/character/"+charID,function(data){
+                const name = data.name;
+                
+                //  create a new <h3> element and reference it to a new variable (who)  //
+                var who = document.createElement("h3");
+                
+                //  put the text from 'name' into the h3 element called 'who'  //
+                who.textContent = "-"+name;
+                
+                //  add the h3 element named 'who' to the div element named 'line'  //
+                line.appendChild(who);
+                
+                //  query the API with the movieID to retrieve 'name' value of movie  //
+                $.getJSON("https://the-one-api.herokuapp.com/v1/movie/"+movieID,function(data){
+                    const title = data.name;
+                
+                    //  create a new <h4> element and refernce it to a new variable (what)  //
+                    var what = document.createElement("h4");
+                
+                    //  put the text from 'title' into the h4 element named 'what'  //
+                    what.textContent = "("+title+")";
+                
+                    //  add the h4 element named 'what' to the div element named 'line'  //
+                    line.appendChild(what);
+                    })
+                })
+            
+            //  add the div element named 'line' as a child to the element with ID='quotes'  //
+            document.getElementById("quotes").appendChild(line);
+        })
+    }
+}
+</script>
+</body>
+
+</html>

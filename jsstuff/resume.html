@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My Resume</title>
+</head>
+<body id="main" class="light">
+<header>
+    <h1>PETER PARKER <img id="selector" src="moon.png"></h1>
+        <p>212-101-4321 | <a class="light" href="mailto:peter@dailyplanet.com">peter@myemail.net</a> | <a href="https://www.linkedin.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png"></a></p>
+</header>
+<main>
+    <article>
+        <h2>Summary</h2>
+            <p>Part time hero, full time programmer, level-headed and unassuming. Accomplished much in my short time and look forward to doing more with the time I have left. Assuming I'm not assassinated by an army of rogue agents from another planet.</p>
+        </article>
+    <div class="row">
+    <section class="col">
+        <h2>Experience</h2>
+        <ul>
+            <li>I was born</li>
+            <li>I've survived this long</li>
+            <li>I haven't yet killed you</li>
+        </ul>
+        </section>
+    <section class="col">
+        <h2>Education</h2>
+        <ul>
+            <li><a href="https://www.arizona.edu">Arizona University</a> - Master's Degree, Environmental Engineering (2006)</li>
+            <li><a href="https://www.NYU.edu">New York State University</a> - Bachelor's Degree (1999)</li>
+            <li><a href="http://www.united.k12.oh.us/">Bestest Local Schools Evah</a> (1995) </li>
+        </ul>
+        </section>
+    </div>
+    <section>
+        <h2>Internship</h2>
+
+<p>ABC Company, Sometown, NH<br />
+Computer Programmer Intern, 2016 to Present</p>
+<h3>Selected accomplishments:</h3>
+<ul>
+	<li>Handled database and Web site programming tasks (primarily using Java, C, C++, HTML and SharePoint), working an average of 15 hours per week while maintaining a 3.5 GPA.</li>
+	<li>Redesigned Internet and intranet pages. Used SEO best practices to optimize Web site for search engine rankings and improved functionality of company database.</li>
+	<li>Resolved memory corruption and other technical issues by leveraging strengths in coding, debugging and integration testing.</li>
+</ul>
+    </section>
+    <section>
+<h2>Technology</h2>
+
+<ul>
+	<li>Programming/Languages:> VB.Net; C#; .Net; C; C++; ASP.Net; Python, VBA, Java, Visual Basic; SharePoint; PHP; MySQL; HTML; Ant</li>	
+    <li>Databases Management: Oracle 8.x/9.x, SQL Server, MS Access</li>
+	<li>Design &amp; IDE Tools: Rational Rose, UML, WSAD, Oracle WebLogic Server</li>
+	<li>Systems: Windows Server 2016, Linux/Unix, Mac OS X</li>
+</ul>
+    </section>
+    <section>
+<h2>Volunteer Work</h2>
+
+<ul>
+	<li>Volunteered during summers for Habitat for Humanity and ABC Homeless Shelter.</li>
+</ul>
+    </section>
+    </main>
+    
+<!--  HERE STARTS MY MAIN JAVASCRIPT AREA!!  -->
+<script>
+//  when someone clicks on the element of ID='selector', then run the function 'myFun'  //
+document.getElementById("selector").addEventListener("click", myFun);
+
+//  create a varialble called light and set it equal to 'true' (boolean)  //
+var light = true;
+        
+//  declare and define my main function  //
+function myFun(){
+        
+    //  check the boolean condition of variable 'light', proceed if true. if false, move to line 'else'  //
+    if (light){
+            
+        //  set the body element's background color to darkblue  //
+        document.body.style.backgroundColor = "darkblue";
+            
+        //  set the font color of the body element to floralwhite  //
+        document.body.style.color = 'floralwhite';
+            
+        //  run the colorLinks function and pass it the text 'floralwhite'  //
+        colorLinks("floralwhite");
+            
+        //  declare and define the colorLinks function  //
+        function colorLinks(hex){
+                
+            //  collect all the document's 'a' elements and put them in an object called 'links'  //
+            var links = document.getElementsByTagName("a");
+
+            //  loop through and change the color of each link in the obect called 'links'  //
+            for(var i=0;i<links.length;i++){
+                if(links[i].href){
+                    links[i].style.color = hex;  
+                    }
+                }  
+            }
+            
+        //  set the variable light to false  //
+        light = false;
+            
+        //  change the image source to the sun picture  //
+        document.getElementById("selector").src="sun.png";}
+        
+        //  if 'light' is false, do the following stuff.  Exactly the same as above, but with different colors and changing the picture to a moon and setting light = true  //
+        else {
+            document.body.style.backgroundColor = "floralwhite";
+            document.body.style.color = 'darkblue';
+            colorLinks("darkblue");
+            function colorLinks(hex){
+                var links = document.getElementsByTagName("a");
+                for(var i=0;i<links.length;i++){
+                    if(links[i].href){
+                        links[i].style.color = hex;  
+                        }
+                }  
+            }
+            light = true;
+            document.getElementById("selector").src="moon.png"
+        }
+    }
+</script>
+</body>
+</html>

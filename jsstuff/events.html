@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+    float: left;
+}
+    p::before {content: "";
+        display: table;
+        clear: both;}
+</style>
+</head>
+<body>
+
+<!--  create the fist box with all our event listeners (onmousemove, onmouseout, onmouseover, onclick)  -->
+<div id="box" onmousemove="coordinates(event)" onmouseout="warnEm()" onclick="addLine(event)" onmouseover="clearBox()"></div>
+<div id="coord">Get in the box</div>
+
+<p>Mouse over the rectangle above left, and get the coordinates of your mouse pointer displayed in the neighboring rectangle.</p>
+
+<p>When the mouse is moved over the div, the p element will display the horizontal and vertical coordinates of your mouse pointer, whose values are returned from the clientX and clientY properties on the 
+MouseEvent object.</p>
+<p>When the mouse is moved out of the div (onmouseout), the div element will display some text.</p>
+<p>When the mouse is clicked within the div, the horizontal and vertical coordinates of your mouse pointer, whose values are returned from the clientX and clientY properties on the 
+MouseEvent object are stored as a string value and the function adds a line to the top of the list of coordinates.</p>
+
+<section id="demo"></section>
+
+<script>
+
+//  declare and define the coordinates function, where e stands for the event data object being passed with the function call above in the mouseover event listener  //
+function coordinates(e) {
+    //  set a variable (coor) equal to some html and position data from the event object 'e'  //
+  var coor = "<p>Coordinates: (" + e.clientX + "," + e.clientY + ")</p>";
+    //  put the value of 'coor' inside the element of ID='coord'  //
+  document.getElementById("coord").innerHTML = coor;
+}
+// declare an empty variable (added)  //
+var added = "";
+
+// declare and define the function that captures the coordinates and adds a line to the document  //
+function addLine(e) {
+ 
+    // set a variable (added) equal to some html and position data from the event object 'e', then add it to itself  //
+    added = "<p>Coordinates: (" + e.clientX + "," + e.clientY + ")</p>" + added;
+  
+    // put the value of 'added' inside the element of ID='demo' //
+    document.getElementById("demo").innerHTML = added;
+ }
+
+// declare and define the function that occurs when the mouse moves out of the box  //
+function warnEm() {
+  document.getElementById("box").innerHTML = "<h2>Get back in<br>the box!</h2>";
+}
+    
+// declare and define the function that occurs when the mouse moves back over the box  //
+function clearBox() {
+  document.getElementById("box").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
+

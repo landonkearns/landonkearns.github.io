@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=La+Belle+Aurore|Pangolin|Oswald|Walter+Turncoat&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    * {box-sizing: border-box;
+        margin: 0;}
+    html {}
+    header {text-align: center;
+        font-size: 1.6em;}
+    header h1 {margin-bottom: -0.5em;}
+    body {width: 90vw;
+        max-width: 1000px;
+        margin: auto;
+        font-family: Oswald, sans-serif;
+        padding: 1em;
+        background-image: linear-gradient(#9090ee, #02b4ad);
+        background-repeat: no-repeat;
+        height: 100vh;}
+    .row {border: 1px solid black;
+        margin: 1em;}
+    .row::after {display: table;
+        content: "";
+        clear: both;}
+    .col {
+        float: left;
+        padding: 1em;
+        }
+    .left {width: 40%;
+        text-align: right;
+        }
+    .right {width: 60%;
+        text-align: justify;
+        }
+    .col p {font-size: 1.6em;}
+    .kw {font-family: 'La Belle Aurore', cursive;}
+    .yd {font-family: 'Walter Turncoat', cursive;}
+</style>
+</head>
+<body>
+<header>
+    <h1><span class="kw">Kanye</span> -> <span class="yd">Yoda</span></h1>
+    <h5>you're welcome</h5>
+    </header>
+<main>
+    <div class="row">
+        <div class="col left"><h2>What Kanye Says:</h2></div>
+        <div id="msg" class="col right kw"></div>
+    </div>
+    <div class="row">
+        <div class="col left"><h2>What Yoda Says:</h2></div>
+        <div id="yod" class="col right yd"></div>
+    </div>
+</main>
+
+<script>
+
+translate();
+    
+function translate(){
+$.getJSON("https://api.kanye.rest/", function (quote){
+    console.log(quote);
+    var mess = quote.quote;
+    encodedMess = encodeURI(mess);
+    console.log(encodedMess);
+    document.getElementById("msg").innerHTML = "<p>" + mess + "</p>";
+    
+//$.getJSON("https://api.funtranslations.com/translate/yoda.json?text="+encodedMess, function (yodish){
+    console.log(yodish);
+    var yoda = yodish.contents.translated;
+    console.log(yoda);
+    document.getElementById("yod").innerHTML = "<p>" + yoda + "</p>";
+})
+// $('.other').append(mess); //
+
+
+//});
+};
+</script>
+
+</body>
+</html>
+
