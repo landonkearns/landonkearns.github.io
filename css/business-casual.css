@@ -6,7 +6,7 @@
 
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  background: url('../img/bg.jpg') no-repeat center center fixed;
+  background: url('') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -63,4 +63,10 @@ hr.divider {
 
 .map-container iframe.clicked {
   pointer-events: auto;
+}
+video {display: none;}
+@media (min-width: 768px){
+video {
+    display: inline-block;
+    }
 }
