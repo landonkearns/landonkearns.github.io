@@ -21,6 +21,7 @@
     <!-- Custom styles for this template -->
     <link href="css/my_style.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.deepai.org/deepai.min.js"></script>
   </head>
 
   <body>
@@ -110,7 +111,7 @@
 
       <div class="bg-faded p-4 my-4">
         <hr class="divider">
-        <h2 class="text-center text-lg text-uppercase my-0">Build a website
+        <h2 class="text-center text-lg text-uppercase my-0">Build a <span id="txt_3"></span> website
           <strong>worth visitng</strong>
         </h2>
         <hr class="divider">
@@ -118,9 +119,7 @@
             <div class="col-lg-6 text-center">
           <img class="img-fluid mr-4 d-none d-md-block mx-auto" id="img_pop" src="" alt="some nice image"></div>
         <div class="col-lg-6">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam soluta dolore voluptatem, deleniti dignissimos excepturi veritatis cum hic sunt perferendis ipsum perspiciatis nam officiis sequi atque enim ut! Velit, consectetur.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur perspiciatis reprehenderit illo et vitae iste provident debitis quos corporis saepe deserunt ad, officia, minima natus molestias assumenda nisi velit?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit totam libero expedita magni est delectus pariatur aut, aperiam eveniet velit cum possimus, autem voluptas. Eum qui ut quasi voluptate blanditiis?</p>
+        <p id=txt_1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam soluta dolore voluptatem, deleniti dignissimos excepturi veritatis cum hic sunt perferendis ipsum perspiciatis nam officiis sequi atque enim ut! Velit, consectetur.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur perspiciatis reprehenderit illo et vitae iste provident debitis quos corporis saepe deserunt ad, officia, minima natus molestias assumenda nisi velit?<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit totam libero expedita magni est delectus pariatur aut, aperiam eveniet velit cum possimus, autem voluptas. Eum qui ut quasi voluptate blanditiis?</p>
             </div>
           </div>
       </div>
@@ -128,7 +127,7 @@
       <div class="bg-faded p-4 my-4">
         <hr class="divider">
         <h2 class="text-center text-lg text-uppercase my-0">Beautiful boxes to
-          <strong>showcase your content</strong>
+          <strong>showcase <span id="txt_4"></span> content</strong>
         </h2>
         <hr class="divider">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -174,10 +173,27 @@
         var tags = picData1.hits[bgIndex].tags;
         var taglist = tags.split(',',3);
         var tag1 = taglist[0];
+        document.getElementById("txt_3").innerHTML = siteCat;
         var tag2 = taglist[1];
+        document.getElementById("txt_4").innerHTML = siteCat;
         var q1 = encodeURI(tag1);
         var q2 = encodeURI(tag2);
         console.log("Tag1: "+tag1+", Tag2: "+tag2);
+        const apiKey = 'LkJAEKDBhMFK7BSrQAQAm8ByMMfkd8EB';
+       $.getJSON("https://api.nytimes.com/svc/search/v2/articlesearch.json?q="+q1+"&api-key="+apiKey, function (newsBlock){
+        var numNews = randomNumber(10);
+        console.log(newsBlock);
+        const firstTxt = newsBlock.response.docs[numNews].lead_paragraph;
+deepai.setApiKey('14dc2dee-0f2f-4741-be78-63ec8cff193e');
+
+(async function() {
+    var resp = await deepai.callStandardApi("text-generator", {
+            text: firstTxt,
+    });
+    await deepai.renderResultIntoElement(resp, document.getElementById('txt_1'));
+    console.log(resp);
+})()
+        
     $.getJSON("https://pixabay.com/api/?key="+picApiKey+"&q="+q1+"&image_type=photo", function (picData2){
         for (let i=1; i<4; i++){
         var num = randomNumber(20)-1;
@@ -187,8 +203,8 @@
     $.getJSON("https://pixabay.com/api/?key="+picApiKey+"&q="+q2+"&image_type=photo", function (picData3){
         var img_1 = picData3.hits[0].webformatURL;
         document.getElementById("img_pop").src=img_1;});
-    $.getJSON("https://pixabay.com/api/videos/?key="+picApiKey+"&q="+q1, function (vidData){
-        var vid_src = vidData.hits[0].videos.medium.url;
+    $.getJSON("https://pixabay.com/api/videos/?key="+picApiKey+"&q="+siteCat, function (vidData){var numV = randomNumber(20);
+        var vid_src = vidData.hits[numV].videos.medium.url;
     const video = document.getElementById("vid1");
     const source = document.createElement("source");
     source.setAttribute('src', vid_src);
@@ -196,7 +212,8 @@
         video.play();
     });
     });
-    var url = "http://colormind.io/api/";
+    });
+/*    var url = "http://colormind.io/api/";
 var data = {
 	model : "default",
 	input : [[44,43,44],[90,83,82],"N","N","N"]
@@ -212,7 +229,7 @@ http.onreadystatechange = function() {
 
 http.open("POST", url, true);
 http.send(JSON.stringify(data));
-
+*/
     </script>
 
 </body>
