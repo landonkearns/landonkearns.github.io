@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Random Cocktail</title>
+<!-- Tell the browser to load the jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<!-- below, we create a button and instruct the browser to run the "drinkMe()" function when it's clicked -->
+<input type="button" id="myButt" onclick="drinkMe()" value="Click ME">
+<div id="myStuff">
+<!-- this is the empty div that will contain our two data elements: the drink name and the drink image -->
+</div>
+<script>
+    // we define what the drinkMe() function does...
+function drinkMe(){
+    // first order of business is to remove all html content in the (initially) empty div
+    // this way, the button can be clicked repeatedly without building up content
+    document.getElementById('myStuff').innerHTML = ""
+
+    // then, we go get our data from the API and we process the retuned data object (result)
+    // the URL in our request specifies that we are asking for 1 random drink recipie
+    $.getJSON("https://www.thecocktaildb.com/api/json/v1/1/random.php", function(result){
+        // extract the name and image URL from the data object
+        const drinkName = result.drinks[0].strDrink;
+        const drinkLink = result.drinks[0].strDrinkThumb;
+
+        // create an h1 and an img element to insert into the document
+        const newH1 = document.createElement("h1");
+        const newImg = document.createElement("img");
+
+        // set the source and alt-text Attributes of the img tag/element 
+        newImg.setAttribute("src", drinkLink);
+        newImg.setAttribute("alt", drinkName);
+
+        // stick the drinkName text string inside the new h1 element
+        newH1.innerHTML = drinkName;
+
+        // add the two elements as children to the #myStuff div
+        document.getElementById("myStuff").appendChild(newH1);
+        document.getElementById("myStuff").appendChild(newImg);
+    });
+}
+</script>
+</body>
+
+</html>
